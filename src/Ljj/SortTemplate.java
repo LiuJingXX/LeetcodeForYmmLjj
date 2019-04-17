@@ -1,9 +1,6 @@
 package Ljj;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @ClassName SortTemplate
@@ -18,6 +15,9 @@ public class SortTemplate {
     }
     static class shu{
         int x;
+        shu(int x){
+            this.x = x;
+        }
     }
     static class Cmp1 implements Comparator<shu>{
         @Override
@@ -36,6 +36,16 @@ public class SortTemplate {
         int[] a = {1,3,45,6,23,5,67,123,5,6,5,321,99};
         //Collections排序
         List<Integer> list = Arrays.asList(1, 3, 45, 6, 23, 5, 67, 123, 5, 6, 5, 321, 99);
+        List<shu> list2 = new ArrayList<>();
+        list2.add(new shu(1));
+        list2.add(new shu(3));
+        list2.add(new shu(2));
+        Collections.sort(list2,(a1,a2)->(a1.x-a2.x));
+        for(shu x:list2){
+            System.out.println(x.x);
+        }
+        System.out.println("---------------------------------------------------");
+        //Collections.sort(intervals,(x,y)->(x.start - y.start));
         Collections.sort(list, new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
@@ -49,7 +59,7 @@ public class SortTemplate {
         //结构体排序
         shu[] aa = new shu[a.length];
         for(int i = 0;i < a.length;i++){
-            aa[i] = new shu();
+            aa[i] = new shu(i);
             aa[i].x = a[i];
         }
         Arrays.sort(aa,new Cmp1());
